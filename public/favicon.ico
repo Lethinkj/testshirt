@@ -1,0 +1,2 @@
+[Binary file: favicon.ico]
+Description: A 32x32 pixel icon file for the 7F Tshirt website, typically an image of a T-shirt or the "7F" logo in your brand colors (e.g., Jet Black #000000, Accent Red #FF0000). This file should be placed in the `public/` directory and is referenced in `public/index.html` via `<link rel="icon" href="/favicon.ico">`.
