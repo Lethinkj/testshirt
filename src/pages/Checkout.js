@@ -1,12 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loadStripe } from '@stripe/stripe-js';
 import { supabase } from '../supabaseClient';
 import { AuthContext } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const Checkout = () => {
   const { user } = useContext(AuthContext);
@@ -47,38 +45,9 @@ const Checkout = () => {
     setShipping((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleCheckout = async () => {
-    if (!shipping.name || !shipping.address || !shipping.city || !shipping.postalCode || !shipping.country) {
-      alert('Please fill in all shipping details');
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const total = cart.reduce((sum, item) => sum + item.quantity * item.products.price, 0);
-      const response = await fetch('https://ssycjlrhrvyfupvrzpgd.supabase.co/functions/v1/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ cartItems: cart, total, shipping }),
-      });
-
-      const { sessionId } = await response.json();
-      if (!sessionId) throw new Error('Failed to create checkout session');
-
-      const stripe = await stripePromise;
-      const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) throw error;
-
-      // Note: Post-payment logic (clear cart, save orders) is handled in Edge Function or success page
-    } catch (error) {
-      console.error('Checkout error:', error);
-      alert('Checkout failed: ' + error.message);
-    } finally {
-      setLoading(false);
-    }
+  // Stripe checkout removed
+  const handleCheckout = () => {
+    alert('Checkout functionality is currently disabled.');
   };
 
   if (!user) return null;

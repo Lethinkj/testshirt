@@ -1,23 +1,16 @@
 {
   "name": "7f-tshirt-shop",
   "version": "1.0.0",
-  "homepage": "https://yourusername.github.io/7f-tshirt-shop",
+  "homepage": "https://lethinkj.github.io/testshirt",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "@stripe/react-stripe-js": "^2.8.0",
-    "@stripe/stripe-js": "^4.5.0",
-    "@supabase/supabase-js": "^2.45.4",
-    "glob": "^11.0.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2",
-    "react-scripts": "^5.0.1",
-    "rimraf": "^6.0.1",
-    "tailwindcss": "^3.4.12"
+    "tailwindcss": "^3.4.12",
+    "gh-pages": "^6.0.0"
   },
   "devDependencies": {
     "gh-pages": "^6.1.1"

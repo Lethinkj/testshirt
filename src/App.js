@@ -13,7 +13,7 @@ import AdminDashboard from './pages/AdminDashboard';
 
 const App = () => (
   <AuthProvider>
-    <Router>
+    <Router basename="/testshirt">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/polo" element={<Polo />} />

@@ -1,10 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { supabase } from '../supabaseClient';
 import { AuthContext } from '../context/AuthContext';
-import { loadStripe } from '@stripe/stripe-js';
 import { useNavigate } from 'react-router-dom';
-
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const Cart = () => {
   const { user } = useContext(AuthContext);
@@ -34,18 +31,9 @@ const Cart = () => {
     setCart(data);
   };
 
-  const handleCheckout = async () => {
-    const total = cart.reduce((sum, item) => sum + item.quantity * item.products.price, 0);
-    const response = await fetch('https://ssycjlrhrvyfupvrzpgd.supabase.co/functions/v1/create-checkout-session', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}` },
-      body: JSON.stringify({ cartItems: cart, total })
-    });
-    const { sessionId } = await response.json();
-    const stripe = await stripePromise;
-    await stripe.redirectToCheckout({ sessionId });
-
-    // On success (handled in Edge Function), clear cart and insert orders
+  // Stripe checkout removed
+  const handleCheckout = () => {
+    alert('Checkout functionality is currently disabled.');
   };
 
   if (!user) return <div className="text-center my-8">Please login to view cart</div>;

@@ -1,6 +1,6 @@
 # 7F Tshirt E-Commerce
 
-A React-based e-commerce website for selling T-shirts (Polo, Crewneck, Oversized) with Supabase for backend and Stripe for payments. Features include user authentication (admin, manager, user roles), product management, cart, and checkout.
+A React-based e-commerce website for selling T-shirts (Polo, Crewneck, Oversized) with Supabase for backend. Features include user authentication (admin, manager, user roles), product management, cart, and checkout.
 
 ## Setup
 
@@ -20,7 +20,6 @@ A React-based e-commerce website for selling T-shirts (Polo, Crewneck, Oversized
    ```
    REACT_APP_SUPABASE_URL=https://ssycjlrhrvyfupvrzpgd.supabase.co
    REACT_APP_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzeWNqbHJocnZ5ZnVwdnJ6cGdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczMTI0MDAsImV4cCI6MjA3Mjg4ODQwMH0.jWcYvJlVQkJ2nQDYiRDYRUGkSQUQPSrSxIhEp2OG-do
-   REACT_APP_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
    ```
 
 4. **Supabase Setup**:
@@ -50,7 +49,7 @@ A React-based e-commerce website for selling T-shirts (Polo, Crewneck, Oversized
    npm run deploy
    ```
 
-3. **Update Stripe URLs**:
+3. **Update URLs**:
    In `supabase/functions/create-checkout-session/index.ts`, set `success_url` and `cancel_url` to `https://yourusername.github.io/7f-tshirt-shop/cart`.
 
 ## Usage
@@ -61,11 +60,10 @@ A React-based e-commerce website for selling T-shirts (Polo, Crewneck, Oversized
 
 ## Dependencies
 
-- React, React Router, Supabase, Stripe, Tailwind CSS
+- React, React Router, Supabase, Tailwind CSS
 - See `package.json` for full list
 
 ## Notes
 
 - Replace `yourusername` with your GitHub username.
-- Test Stripe payments with card `4242 4242 4242 4242`.
 - Ensure Supabase Auth has email confirmations enabled.
